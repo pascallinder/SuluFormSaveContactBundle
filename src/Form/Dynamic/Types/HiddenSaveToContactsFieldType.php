@@ -3,8 +3,8 @@ namespace Linderp\SuluFormSaveContactBundle\Form\Dynamic\Types;
 
 use Sulu\Bundle\FormBundle\Dynamic\FormFieldTypeConfiguration;
 use Sulu\Bundle\FormBundle\Dynamic\FormFieldTypeInterface;
-use Sulu\Bundle\FormBundle\Dynamic\Types\HiddenType;
 use Sulu\Bundle\FormBundle\Entity\FormField;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class HiddenSaveToContactsFieldType implements FormFieldTypeInterface
@@ -16,7 +16,7 @@ class HiddenSaveToContactsFieldType implements FormFieldTypeInterface
     {
         return new FormFieldTypeConfiguration(
             'sulu_form.fields.type_hidden_save_to_contacts_field',
-            __DIR__ . '/../../../../config/form-fields/hidden_save_to_contacts_field_type.xml',
+            __DIR__ . '/../../../Resources/config/form-fields/hidden_save_to_contacts_field_type.xml',
             'special'
         );
     }

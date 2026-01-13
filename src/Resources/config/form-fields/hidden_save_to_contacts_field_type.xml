@@ -1,0 +1,20 @@
+
+<properties xmlns="http://schemas.sulu.io/template/template"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/properties-1.0.xsd">
+    <property name="options/saveToContacts" type="checkbox" mandatory="true" colspan="3">
+        <meta>
+            <title lang="de">Speichere den Kontakt</title>
+            <title lang="en">Save the contact</title>
+        </meta>
+        <params>
+            <param name="type" value="toggler"/>
+            <param name="default_value" value="true"/>
+        </params>
+    </property>
+    <property name="options/categoryId" type="single_category_selection" colspan="9">
+        <meta>
+            <title>app.category.title</title>
+        </meta>
+    </property>
+</properties>

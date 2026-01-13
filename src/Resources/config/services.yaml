@@ -11,3 +11,16 @@ services:
     Linderp\SuluFormSaveContactBundle\Subscriber\DynamicFormSubscriber:
         tags:
             - { name: 'kernel.event_subscriber'}
+    Linderp\SuluFormSaveContactBundle\Service\DynamicFormHandler:
+        arguments:
+            - !tagged_iterator subscriber.handler
+            - '@sulu_contact.contact_manager'
+    Linderp\SuluFormSaveContactBundle\Service\FieldHandler\:
+        resource: '../../Service/FieldHandler/'
+        tags:
+            - { name: 'subscriber.handler' }
+        exclude:
+            - '../../Service/FieldHandler/Exception/'
+    Linderp\SuluFormSaveContactBundle\Form\Dynamic\Types\HiddenSaveToContactsFieldType:
+        tags:
+            - { name: 'sulu_form.dynamic.type', alias: 'hidden_save_to_contacts' }
