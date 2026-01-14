@@ -10,7 +10,7 @@ class StreetFieldHandler extends AddressesFieldHandler
         return "street";
     }
 
-    protected function getPropertyName(): string
+    public static function getPropertyName(): string
     {
         return "street";
     }

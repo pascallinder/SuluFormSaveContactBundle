@@ -1,7 +1,6 @@
 # SuluFormSaveContactBundle
 
-**Sulu bundle that integrates IndexNow API to instantly inform search engines and web crawlers about latest content changes.**
-See [here](https://www.indexnow.org/index) for more information.
+**Sulu bundle that integrates a hidden save to contacts field for the [SuluFormBundle](https://github.com/sulu/SuluFormBundle).**
 
 ## Installation
 
@@ -22,44 +21,8 @@ return [
 ];
 ```
 
-2. Register the new routes by adding the following to your `routes_admin.yaml`:
-
-```yaml
-SuluFormSaveContactBundle:
-    resource: "@SuluFormSaveContactBundle/Resources/config/routes_admin.yml"
-```
-
-3. If you don't have the IndexNow setup already, generate your key [here](https://www.bing.com/indexnow/getstarted). Then follow the instructions and put the file in the `public` folder:
-4. Add the file `config/packages/sulu_form_save_contact.yaml` with the following configuration and replace #your key here with your actual key:
-```yaml
-sulu_form_save_contact:
-    key: #your key here
-    search_engines:
-        IndexNow: 'https://api.indexnow.org/indexnow'
-        Amazon: 'https://indexnow.amazonbot.amazon/indexnow'
-        Bing: 'https://www.bing.com/indexnow'
-        Naver: 'https://searchadvisor.naver.com/indexnow'
-        Seznam: 'https://search.seznam.cz/indexnow'
-        Yandex: 'https://yandex.com/indexnow'
-        Yep: 'https://indexnow.yep.com/indexnow'
-``` 
-5. Reference the frontend code by adding the following to your `assets/admin/package.json`:
-
-```json
-"dependencies": {
-    "sulu-form-save-contact-bundle": "file:../../vendor/linderp/sulu-form-save-contact-bundle/src/Resources/js"
-}
-```
-
-5. Import the frontend code by adding the following to your `assets/admin/app.js`:
-
-```javascript
-import "sulu-form-save-contact-bundle";
-```
-
-6. Build the admin UI:
+2. Clear the cache:
 
 ```bash
-cd assets/admin
-npm run build
+bin/console cache:clear
 ```

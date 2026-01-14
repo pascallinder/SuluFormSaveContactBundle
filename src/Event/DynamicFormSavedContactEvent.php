@@ -10,7 +10,8 @@ class DynamicFormSavedContactEvent extends Event
 {
     public function __construct(private readonly ContactInterface $contact,
                                 private readonly array $contactData,
-                                private readonly string $locale){
+                                private readonly string $locale,
+                                private readonly bool $existingContact){
 
     }
     public function getContact(): ContactInterface
@@ -26,5 +27,10 @@ class DynamicFormSavedContactEvent extends Event
     public function getLocale(): string
     {
         return $this->locale;
+    }
+
+    public function isExistingContact(): bool
+    {
+        return $this->existingContact;
     }
 }

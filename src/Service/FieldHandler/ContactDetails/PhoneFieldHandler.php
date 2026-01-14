@@ -9,7 +9,7 @@ class PhoneFieldHandler extends ContactDetailsFieldHandler
         return 'phone';
     }
 
-    protected function getPropertyName(): string
+    public static function getPropertyName(): string
     {
         return 'phones';
     }

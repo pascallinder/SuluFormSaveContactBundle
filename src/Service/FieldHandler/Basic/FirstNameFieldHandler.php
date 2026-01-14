@@ -7,8 +7,8 @@ class FirstNameFieldHandler extends BaseFieldHandler
     {
         return 'firstName';
     }
-    protected function getPropertyName(): string
+    public static function getPropertyName(): string
     {
-       return $this->getFieldType();
+       return 'firstName';
     }
 }

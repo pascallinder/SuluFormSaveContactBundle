@@ -15,7 +15,7 @@ class MailFieldHandler extends ContactDetailsFieldHandler implements FieldValida
         return 'email';
     }
 
-    protected function getPropertyName(): string
+    public static function getPropertyName(): string
     {
         return 'emails';
     }

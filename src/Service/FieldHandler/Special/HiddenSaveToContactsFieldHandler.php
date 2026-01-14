@@ -16,11 +16,13 @@ class HiddenSaveToContactsFieldHandler extends FieldHandler
             || !array_key_exists('saveToContacts',$field['options']) || !$field['options']['saveToContacts']){
             return $data;
         }
-        $data[$this->getPropertyName()] = true;
-        if(!array_key_exists('categoryId',$field['options']) || $field['options']['categoryId'] === null){
-            return $data;
+        $data[self::getPropertyName()] = true;
+        if(array_key_exists('categoryId',$field['options']) && $field['options']['categoryId'] !== null){
+            $data['categories'] = [$field['options']['categoryId']];
         }
-        $data['categories'] = [$field['options']['categoryId']];
+        if(array_key_exists('defaultFormOfAddress',$field['options']) && $field['options']['defaultFormOfAddress'] !== null){
+            $data['formOfAddress'] = $field['options']['defaultFormOfAddress'];
+        }
         return $data;
     }
 
@@ -29,7 +31,7 @@ class HiddenSaveToContactsFieldHandler extends FieldHandler
         return 'hidden_save_to_contacts';
     }
 
-    protected function getPropertyName(): string
+    public static function getPropertyName(): string
     {
         return 'saveToContacts';
     }

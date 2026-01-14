@@ -12,9 +12,18 @@
             <param name="default_value" value="true"/>
         </params>
     </property>
-    <property name="options/categoryId" type="single_category_selection" colspan="9">
+    <property name="options/defaultFormOfAddress" type="single_select" mandatory="true" colspan="3">
+        <meta>
+            <title>sulu_contact.form_of_address</title>
+        </meta>
+        <params>
+            <param name="values" type="expression" value="service('sulu_contact.form_of_address_provider').getValues(locale)"/>
+        </params>
+    </property>
+    <property name="options/categoryId" type="single_category_selection" colspan="6">
         <meta>
             <title>app.category.title</title>
         </meta>
     </property>
+
 </properties>

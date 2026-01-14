@@ -10,7 +10,7 @@ class ZipFieldHandler extends AddressesFieldHandler
         return "zip";
     }
 
-    protected function getPropertyName(): string
+    public static function getPropertyName(): string
     {
         return "zip";
     }
