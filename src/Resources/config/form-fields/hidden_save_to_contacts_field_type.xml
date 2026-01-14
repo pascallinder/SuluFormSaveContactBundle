@@ -12,7 +12,7 @@
             <param name="default_value" value="true"/>
         </params>
     </property>
-    <property name="options/defaultFormOfAddress" type="single_select" mandatory="true" colspan="3">
+    <property name="options/defaultFormOfAddress" type="single_select" colspan="3">
         <meta>
             <title>sulu_contact.form_of_address</title>
         </meta>
