@@ -1,10 +1,7 @@
 <?php
 
 namespace Linderp\SuluFormSaveContactBundle\Service\FieldHandler\Special;
-use App\Repository\Newsletter\NewsletterRepository;
 use Linderp\SuluFormSaveContactBundle\Service\FieldHandler\FieldHandler;
-use Sulu\Bundle\CategoryBundle\Entity\Category;
-use Sulu\Bundle\CategoryBundle\Entity\CategoryRepositoryInterface;
 
 class HiddenSaveToContactsFieldHandler extends FieldHandler
 {
