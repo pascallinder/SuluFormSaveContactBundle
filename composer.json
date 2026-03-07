@@ -5,8 +5,8 @@
     "version": "0.1",
     "require": {
         "php": "^8.2",
-        "sulu/sulu": "^2.6",
-        "sulu/form-bundle": "^2.5",
+        "sulu/sulu": "^3.0",
+        "sulu/form-bundle": "^3.0.0-RC2",
         "symfony/config": "^6.2 | ^7.0",
         "symfony/dependency-injection": "^6.2 | ^7.0",
         "symfony/framework-bundle": "^6.2 | ^7.0",
