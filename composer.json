@@ -2,7 +2,6 @@
     "name": "linderp/sulu-form-save-contact-bundle",
     "description": "Allows to save contacts using the sulu-forms-bundle",
     "type": "symfony-bundle",
-    "version": "0.1",
     "require": {
         "php": "^8.2",
         "sulu/sulu": "^3.0",
