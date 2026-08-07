@@ -6,7 +6,6 @@ use Linderp\SuluFormSaveContactBundle\Event\DynamicFormSavedContactEvent;
 use Linderp\SuluFormSaveContactBundle\Service\FieldHandler\Exception\ContactAlreadyExistsException;
 use Linderp\SuluFormSaveContactBundle\Service\FieldHandler\Exception\FieldException;
 use Linderp\SuluFormSaveContactBundle\Service\FieldHandler\FieldHandler;
-use Linderp\SuluFormSaveContactBundle\Service\FieldHandler\FieldValidation;
 use Linderp\SuluFormSaveContactBundle\Service\FieldHandler\Special\HiddenSaveToContactsFieldHandler;
 use Sulu\Bundle\ContactBundle\Contact\ContactManagerInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;

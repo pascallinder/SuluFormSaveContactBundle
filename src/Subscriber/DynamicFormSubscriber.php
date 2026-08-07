@@ -2,7 +2,8 @@
 
 namespace Linderp\SuluFormSaveContactBundle\Subscriber;
 use Linderp\SuluFormSaveContactBundle\Service\DynamicFormHandler;
-use Sulu\Bundle\FormBundle\Event\DynFormSavedEvent;
+use Sulu\Bundle\FormBundle\Entity\Dynamic;
+use Sulu\Bundle\FormBundle\Event\FormSavePostEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 readonly class DynamicFormSubscriber implements EventSubscriberInterface
@@ -13,11 +14,15 @@ readonly class DynamicFormSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            DynFormSavedEvent::NAME => "formFilledOut"
+            FormSavePostEvent::NAME => "formFilledOut"
         ];
     }
-    public function formFilledOut(DynFormSavedEvent $event){
-        $dynamic = $event->getDynamic();
+    public function formFilledOut(FormSavePostEvent $event): void
+    {
+        $dynamic = $event->getData();
+        if (!$dynamic instanceof Dynamic) {
+            return;
+        }
         $form = $dynamic->getForm()->serializeForLocale($dynamic->getLocale(), $dynamic);
         $this->dynamicFormHandler->saveContact($form, $dynamic->getLocale());
     }
