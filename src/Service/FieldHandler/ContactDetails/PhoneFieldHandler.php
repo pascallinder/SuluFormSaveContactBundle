@@ -1,9 +1,9 @@
 <?php
 
 namespace Linderp\SuluFormSaveContactBundle\Service\FieldHandler\ContactDetails;
+
 class PhoneFieldHandler extends ContactDetailsFieldHandler
 {
-
     protected function getFieldType(): string
     {
         return 'phone';
@@ -17,7 +17,7 @@ class PhoneFieldHandler extends ContactDetailsFieldHandler
     {
         return [
             'phoneType' => 2,
-            'phone' => $field['value']
+            'phone' => $field['value'],
         ];
     }
 }

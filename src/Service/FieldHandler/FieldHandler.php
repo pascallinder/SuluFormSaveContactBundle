@@ -11,16 +11,17 @@ abstract class FieldHandler
      */
     public function handle(array $field, array $contactData): array
     {
-        if($this instanceof FieldValidation){
-            $this->check($field,$contactData);
+        if ($this instanceof FieldValidation) {
+            $this->check($field, $contactData);
         }
-        return $this->handleField($field,$contactData);
+        return $this->handleField($field, $contactData);
     }
-    protected abstract function handleField(array $field, array $data):array;
-    protected abstract function getFieldType():string;
+    abstract protected function handleField(array $field, array $data): array;
+    abstract protected function getFieldType(): string;
 
-    public abstract static function getPropertyName():string;
-    public function match(array $field):bool{
+    abstract public static function getPropertyName(): string;
+    public function match(array $field): bool
+    {
         return $field['type'] === $this->getFieldType();
     }
 }

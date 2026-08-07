@@ -4,7 +4,7 @@
 
 ## Installation
 
-This bundle requires PHP 8.2 and Sulu 2.6
+This bundle requires PHP 8.2 and Sulu 3.0.8 or newer in the 3.0 release line.
 
 1. Open a command console, enter your project directory and run:
 
