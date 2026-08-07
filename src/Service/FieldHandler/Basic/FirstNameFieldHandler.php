@@ -1,6 +1,7 @@
 <?php
 
 namespace Linderp\SuluFormSaveContactBundle\Service\FieldHandler\Basic;
+
 class FirstNameFieldHandler extends BaseFieldHandler
 {
     protected function getFieldType(): string
@@ -9,6 +10,6 @@ class FirstNameFieldHandler extends BaseFieldHandler
     }
     public static function getPropertyName(): string
     {
-       return 'firstName';
+        return 'firstName';
     }
 }

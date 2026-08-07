@@ -1,6 +1,7 @@
 <?php
 
 namespace Linderp\SuluFormSaveContactBundle\Service\FieldHandler\Basic;
+
 class LastNameFieldHandler extends BaseFieldHandler
 {
     protected function getFieldType(): string

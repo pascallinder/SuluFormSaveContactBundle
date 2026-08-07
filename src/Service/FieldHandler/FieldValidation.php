@@ -9,5 +9,5 @@ interface FieldValidation
     /**
      * @throws FieldException
      */
-    public function check(array $field, array $contactData):void;
+    public function check(array $field, array $contactData): void;
 }

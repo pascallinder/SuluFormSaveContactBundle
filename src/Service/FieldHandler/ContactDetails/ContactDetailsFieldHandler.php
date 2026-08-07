@@ -1,6 +1,7 @@
 <?php
 
 namespace Linderp\SuluFormSaveContactBundle\Service\FieldHandler\ContactDetails;
+
 use Linderp\SuluFormSaveContactBundle\Service\FieldHandler\ArrayFieldHandler;
 
 abstract class ContactDetailsFieldHandler extends ArrayFieldHandler
@@ -12,18 +13,18 @@ abstract class ContactDetailsFieldHandler extends ArrayFieldHandler
 
     protected function handleField(array $field, array $data): array
     {
-        if(!array_key_exists('value',$field) || $field['value'] === null){
+        if (!array_key_exists('value', $field) || $field['value'] === null) {
             return $data;
         }
-        if(!isset($data[$this->getArrayPropertyName()])){
+        if (!isset($data[$this->getArrayPropertyName()])) {
             $data[$this->getArrayPropertyName()] = [];
         }
-        if(!isset($data[$this->getArrayPropertyName()][$this->getPropertyName()])){
-            $data[$this->getArrayPropertyName()][$this->getPropertyName()]=[];
+        if (!isset($data[$this->getArrayPropertyName()][$this->getPropertyName()])) {
+            $data[$this->getArrayPropertyName()][$this->getPropertyName()] = [];
         }
-        $data[$this->getArrayPropertyName()][$this->getPropertyName()][]= $this->getArrayValue($field);
+        $data[$this->getArrayPropertyName()][$this->getPropertyName()][] = $this->getArrayValue($field);
         return $data;
     }
 
-    protected abstract function getArrayValue(array $field):array;
+    abstract protected function getArrayValue(array $field): array;
 }
