@@ -11,21 +11,38 @@ abstract class AddressesFieldHandler extends ArrayFieldHandler
         return 'addresses';
     }
 
+    /**
+     * @param array<string, mixed> $field
+     * @param array<string, mixed> $data
+     *
+     * @return array<string, mixed>
+     */
     protected function handleField(array $field, array $data): array
     {
-        if (!array_key_exists('value', $field) || $field['value'] === null) {
+        if (!isset($field['value'])) {
             return $data;
         }
-        if (!isset($data[$this->getArrayPropertyName()])) {
-            $data[$this->getArrayPropertyName()] = [[
+
+        $addresses = $data[$this->getArrayPropertyName()] ?? [];
+        if (!\is_array($addresses)) {
+            $addresses = [];
+        }
+
+        $address = $addresses[0] ?? null;
+        if (!\is_array($address)) {
+            $address = [
                 "title" => "Adresse",
                 "deliveryAddress" => true,
                 "primaryAddress" => true,
                 "billingAddress" => true,
                 "addressType" => 2,
-            ]];
+            ];
         }
-        $data[$this->getArrayPropertyName()][0][$this->getPropertyName()] = $field['value'];
+
+        $address[$this->getPropertyName()] = $field['value'];
+        $addresses[0] = $address;
+        $data[$this->getArrayPropertyName()] = $addresses;
+
         return $data;
     }
 }

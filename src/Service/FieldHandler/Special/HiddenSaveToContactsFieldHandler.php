@@ -6,20 +6,27 @@ use Linderp\SuluFormSaveContactBundle\Service\FieldHandler\FieldHandler;
 
 class HiddenSaveToContactsFieldHandler extends FieldHandler
 {
-    public function __construct() {}
+    /**
+     * @param array<string, mixed> $field
+     * @param array<string, mixed> $data
+     *
+     * @return array<string, mixed>
+     */
     protected function handleField(array $field, array $data): array
     {
-        if (!array_key_exists('options', $field)
-            || !array_key_exists('saveToContacts', $field['options']) || !$field['options']['saveToContacts']) {
+        $options = $field['options'] ?? null;
+        if (!\is_array($options) || empty($options['saveToContacts'])) {
             return $data;
         }
+
         $data[self::getPropertyName()] = true;
-        if (array_key_exists('categoryId', $field['options']) && $field['options']['categoryId'] !== null) {
-            $data['categories'] = [$field['options']['categoryId']];
+        if (isset($options['categoryId'])) {
+            $data['categories'] = [$options['categoryId']];
         }
-        if (array_key_exists('defaultFormOfAddress', $field['options']) && $field['options']['defaultFormOfAddress'] !== null) {
-            $data['formOfAddress'] = $field['options']['defaultFormOfAddress'];
+        if (isset($options['defaultFormOfAddress'])) {
+            $data['formOfAddress'] = $options['defaultFormOfAddress'];
         }
+
         return $data;
     }
 

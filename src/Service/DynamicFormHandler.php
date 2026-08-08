@@ -23,18 +23,24 @@ readonly class DynamicFormHandler
     ) {}
 
     /**
+     * @param array{fields: array<int, array<string, mixed>>} $form
+     *
      * @throws FieldException
      */
     private function hasSaveContactField(array $form): bool
     {
         foreach ($form['fields'] as $field) {
             if ($this->hiddenSaveToContactsFieldHandler->match($field)) {
-                return $this->hiddenSaveToContactsFieldHandler->handle($field, [])[HiddenSaveToContactsFieldHandler::getPropertyName()];
+                $data = $this->hiddenSaveToContactsFieldHandler->handle($field, []);
+
+                return true === ($data[HiddenSaveToContactsFieldHandler::getPropertyName()] ?? false);
             }
         }
+
         return false;
     }
 
+    /** @param array{fields: array<int, array<string, mixed>>} $form */
     public function saveContact(array $form, string $locale): void
     {
         try {

@@ -11,20 +11,39 @@ abstract class ContactDetailsFieldHandler extends ArrayFieldHandler
         return "contactDetails";
     }
 
+    /**
+     * @param array<string, mixed> $field
+     * @param array<string, mixed> $data
+     *
+     * @return array<string, mixed>
+     */
     protected function handleField(array $field, array $data): array
     {
-        if (!array_key_exists('value', $field) || $field['value'] === null) {
+        if (!isset($field['value'])) {
             return $data;
         }
-        if (!isset($data[$this->getArrayPropertyName()])) {
-            $data[$this->getArrayPropertyName()] = [];
+
+        $contactDetails = $data[$this->getArrayPropertyName()] ?? [];
+        if (!\is_array($contactDetails)) {
+            $contactDetails = [];
         }
-        if (!isset($data[$this->getArrayPropertyName()][$this->getPropertyName()])) {
-            $data[$this->getArrayPropertyName()][$this->getPropertyName()] = [];
+
+        $values = $contactDetails[$this->getPropertyName()] ?? [];
+        if (!\is_array($values)) {
+            $values = [];
         }
-        $data[$this->getArrayPropertyName()][$this->getPropertyName()][] = $this->getArrayValue($field);
+
+        $values[] = $this->getArrayValue($field);
+        $contactDetails[$this->getPropertyName()] = $values;
+        $data[$this->getArrayPropertyName()] = $contactDetails;
+
         return $data;
     }
 
+    /**
+     * @param array<string, mixed> $field
+     *
+     * @return array<string, mixed>
+     */
     abstract protected function getArrayValue(array $field): array;
 }
