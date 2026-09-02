@@ -7,6 +7,9 @@ use Linderp\SuluFormSaveContactBundle\Service\FieldHandler\Exception\FieldExcept
 interface FieldValidation
 {
     /**
+     * @param array<string, mixed> $field
+     * @param array<string, mixed> $contactData
+     *
      * @throws FieldException
      */
     public function check(array $field, array $contactData): void;

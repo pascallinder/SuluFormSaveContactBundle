@@ -7,6 +7,7 @@ use Symfony\Contracts\EventDispatcher\Event;
 
 class DynamicFormSavedContactEvent extends Event
 {
+    /** @param array<string, mixed> $contactData */
     public function __construct(
         private readonly ContactInterface $contact,
         private readonly array $contactData,
@@ -18,6 +19,7 @@ class DynamicFormSavedContactEvent extends Event
         return $this->contact;
     }
 
+    /** @return array<string, mixed> */
     public function getContactData(): array
     {
         return $this->contactData;

@@ -19,6 +19,10 @@ class MailFieldHandler extends ContactDetailsFieldHandler implements FieldValida
         return 'emails';
     }
 
+    /**
+     * @param array<string, mixed> $field
+     * @param array<string, mixed> $contactData
+     */
     public function check(array $field, array $contactData): void
     {
         $contact = $this->contactRepository->findByCriteriaEmailAndPhone([], $field['value']);
